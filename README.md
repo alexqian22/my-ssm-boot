@@ -20,11 +20,11 @@
 
 #### 第三方库
 
-https://github.com/abel533/Mapper
-https://github.com/pagehelper/Mybatis-PageHelper
-https://github.com/google/guava
+https://github.com/abel533/Mapper  
+https://github.com/pagehelper/Mybatis-PageHelper  
+https://github.com/google/guava  
 
-部分utils类来自
+部分utils类来自  
 https://github.com/vipshop/vjtools
 
 
