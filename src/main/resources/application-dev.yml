@@ -1,0 +1,38 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+
+    druid:
+      url: jdbc:mysql://127.0.0.1:3307/my-blog?serverTimezone=GMT%2b8&characterEncoding=utf-8&useSSL=false
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username : root
+      password : cac-111.
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        login-username: druid
+        login-password: druid
+      filter:
+        stat:
+          log-slow-sql: true
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+
+
+logback:
+  level: debug
+  log-path: logs
+
+
+
+
+
+

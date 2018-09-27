@@ -1,0 +1,31 @@
+spring:
+  profiles:
+    active: dev
+
+  # thymeleaf
+  thymeleaf:
+    cache: true
+
+
+
+#mybaits & mapper & pagehelper
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.enreach.ssm.entity
+
+mapper:
+  mappers: com.enreach.ssm.infrastructure.IMapper
+  safe-delete: true
+  check-example-entity-class: true
+  identity: MYSQL
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  autoRuntimeDialect: true
+
+
+
+
+

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <contextName>my-ssm-boot</contextName>
+
+    <springProperty scope="context" name="logPath" source="logback.log-path" defaultValue="logs"/>
+    <springProperty scope="context" name="logLevel" source="logback.level" defaultValue="info"/>
+
+
+    <property name="log.path" value="${logPath}"/>
+    <property name="log.level" value="${logLevel}"/>
+
+
+    <appender name="file_error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/log_error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/error/log_error.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>3MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+
+        </rollingPolicy>
+        <append>true</append>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <charset>utf-8</charset>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>error</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <appender name="file_warn" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/log_warn.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/warn/log_warn.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>3MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+
+        </rollingPolicy>
+        <append>true</append>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <charset>utf-8</charset>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>warn</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+
+    <appender name="file_info" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/log_info.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/info/log_info.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>3MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+
+        </rollingPolicy>
+        <append>true</append>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <charset>utf-8</charset>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>info</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>===%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger Line:%-3L - %msg%n</pattern>
+            <charset>utf-8</charset>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>debug</level>
+        </filter>
+    </appender>
+
+    <logger name="org.springframework" level="warn"/>
+    <logger name="org.hibernate" level="warn"/>
+
+    <root level="warn">
+        <!-- 生产环境将请stdout去掉 -->
+        <appender-ref ref="stdout"/>
+        <appender-ref ref="file_error"/>
+        <appender-ref ref="file_warn"/>
+    </root>
+
+    <logger name="org.springframework.web" level="info" additivity="false">
+        <!-- 生产环境将请stdout去掉 -->
+        <appender-ref ref="stdout"/>
+    </logger>
+
+    <!--application设定-->
+    <logger name="com.enreach.ssm" level="${log.level}" additivity="false">
+        <appender-ref ref="stdout"/>
+        <appender-ref ref="file_error"/>
+        <appender-ref ref="file_warn"/>
+        <appender-ref ref="file_info"/>
+    </logger>
+
+
+</configuration>

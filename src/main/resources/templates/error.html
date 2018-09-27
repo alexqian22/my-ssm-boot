@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Error Page</title>
+</head>
+<body>
+<body>
+<p>错误界面</p>
+<p th:text="${#response.getStatus()}"></p>
+<p th:text="${message}"></p>
+
+</body>
+</html>
