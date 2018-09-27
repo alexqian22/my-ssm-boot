@@ -3,6 +3,7 @@
 
     <contextName>my-ssm-boot</contextName>
 
+    <!--从不同环境读取相关配置-->
     <springProperty scope="context" name="logPath" source="logback.log-path" defaultValue="logs"/>
     <springProperty scope="context" name="logLevel" source="logback.level" defaultValue="info"/>
 
