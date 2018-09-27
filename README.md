@@ -6,7 +6,8 @@
 - aop模型验证
 - 自定义异常 / 全局异常处理
 - 事务 / mybatis 分页 / crud处理
-- 自定义 mapper 伪删除
+- mybatis generator
+- 自定义mapper
 - redis /  scheduled / task
 - utils库
 - thymeleaf
@@ -16,7 +17,7 @@
 #### TODO
 
 - 权限验证（自定义注解 filter / shiro / security）
-- vue 正删改查
+- vue 增删改查
 
 #### 第三方库
 
