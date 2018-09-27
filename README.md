@@ -10,6 +10,13 @@
 - redis /  scheduled / task
 - utils库
 - thymeleaf
+- logback配置
+
+
+#### TODO
+
+- 权限验证（自定义注解 filter / shiro / security）
+- vue 正删改查
 
 #### 第三方库
 
@@ -19,5 +26,6 @@ https://github.com/google/guava
 
 部分utils类来自
 https://github.com/vipshop/vjtools
+
 
 
